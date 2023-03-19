@@ -1,25 +1,28 @@
-//your JS code here. If required.
-function manipulateArray(arr) {
-        return new Promise(function(resolve, reject) {
-          setTimeout(function() {
-            resolve(arr);
-          }, 3000);
-        })
-        .then(function(arr) {
-          return arr.filter(function(num) {
-            return num % 2 === 0;
-          });
-        })
-        .then(function(arr) {
-          return arr.map(function(num) {
-            return num * 2;
-          });
-        });
-      }
+const numbers = [1, 2, 3, 4];
 
-      var inputArr = [1, 2, 3, 4];
+const manipulateNumbers = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(numbers);
+    }, 3000);
+  }).then((numbers) => {
+    const filteredNumbers = numbers.filter(num => num % 2 === 0);
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(filteredNumbers);
+      }, 1000);
+    });
+  }).then((filteredNumbers) => {
+    const doubledNumbers = filteredNumbers.map(num => num * 2);
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(doubledNumbers);
+      }, 2000);
+    });
+  });
+};
 
-      manipulateArray(inputArr).then(function(result) {
-        var output = document.getElementById("output");
-        output.textContent = result.join(", ");
-      });
+manipulateNumbers().then((result) => {
+  const outputElement = document.getElementById("output");
+  outputElement.innerText = result.toString();
+});
