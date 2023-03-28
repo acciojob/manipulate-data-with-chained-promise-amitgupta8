@@ -1,28 +1,30 @@
-const numbers = [1, 2, 3, 4];
-
-const manipulateNumbers = () => {
+function manipulateData(arr) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      resolve(numbers);
+      resolve(arr);
     }, 3000);
-  }).then((numbers) => {
-    const filteredNumbers = numbers.filter(num => num % 2 === 0);
+  })
+  .then(numbers => {
+    const filteredNumbers = numbers.filter(n => n % 2 === 0);
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve(filteredNumbers);
       }, 1000);
     });
-  }).then((filteredNumbers) => {
-    const doubledNumbers = filteredNumbers.map(num => num * 2);
+  })
+  .then(evenNumbers => {
+    const multipliedNumbers = evenNumbers.map(n => n * 2);
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        resolve(doubledNumbers);
+        resolve(multipliedNumbers);
       }, 2000);
     });
+  })
+  .then(finalNumbers => {
+    const outputDiv = document.getElementById("output");
+    outputDiv.innerText = finalNumbers.toString();
   });
-};
+}
 
-manipulateNumbers().then((result) => {
-  const outputElement = document.getElementById("output");
-  outputElement.innerText = result.toString();
-});
+// Example usage:
+manipulateData([1, 2, 3, 4]);
