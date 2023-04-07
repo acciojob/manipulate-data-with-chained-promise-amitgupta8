@@ -22,7 +22,6 @@ function manipulateData(arr) {
   })
   .then(finalNumbers => {
     const outputDiv = document.getElementById("output");
-    outputDiv.innerText = finalNumbers.toString();
   })
   .catch(error => {
     console.error(error);
