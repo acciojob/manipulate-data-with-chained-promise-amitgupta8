@@ -21,10 +21,11 @@ function manipulateData(arr) {
     });
   })
   .then(finalNumbers => {
-    const outputDiv = document.getElementById("output");
+    const outputDiv = document.getElementById(output);
   })
   .catch(error => {
     console.error(error);
+	  catch ;
   });
 }
 
